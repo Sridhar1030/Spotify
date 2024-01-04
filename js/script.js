@@ -190,7 +190,27 @@ function secondsToMinutesSeconds(seconds) {
         document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change",(e)=>
             {   
                 currentSong.volume = parseInt(e.target.value)/100
+                updateMuteButton();
             })
+
+
+
+
+
+            function updateMuteButton() {
+                const volumeImg = document.querySelector(".volume > img");
+            
+                if (currentSong.volume === 0) {
+                    // If volume is zero, show mute SVG
+                    volumeImg.src = volumeImg.src.replace("img/volume.svg", "img/mute.svg");
+                } else {
+                    // If volume is not zero, show volume SVG
+                    volumeImg.src = volumeImg.src.replace("img/mute.svg", "img/volume.svg");
+                }
+            }
+
+
+            
         
             //add event listener to mute the track 
             document.querySelector(".volume>img").addEventListener("click",e=>{
